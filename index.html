@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurioLearn - Brochure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #8b5cf6;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --vibrant: #ec4899;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e0f2fe, #dbeafe);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .brochure {
+            max-width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page {
+            padding: 40px;
+            position: relative;
+            min-height: 100%;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px; /* Increased logo size */
+            margin-right: 15px;
+        }
+        
+        .tagline {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        .contact {
+            text-align: right;
+            font-size: 14px;
+            color: #64748b;
+        }
+        
+        .contact strong {
+            display: block;
+            color: var(--primary);
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .contact a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--dark);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .highlight {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .highlight:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 80%;
+            background: var(--accent);
+            border-radius: 5px;
+        }
+        
+        .subheading {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 30px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #334155;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(90deg, #1d4ed8, #7c3aed);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .course-card {
+            background: linear-gradient(145deg, #ffffff, #f0f9ff);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--vibrant);
+        }
+        
+        .course-icon {
+            font-size: 28px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .benefits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .benefit-card {
+            flex: 1 1 300px;
+            background: linear-gradient(145deg, #ffffff, #f0f9ff);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent);
+        }
+        
+        .benefit-icon {
+            font-size: 32px;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .testimonial {
+            background: linear-gradient(135deg, #e0f2fe, #dbeafe);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            position: relative;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .testimonial:before {
+            content: """;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 80px;
+            font-family: Georgia, serif;
+            color: var(--primary);
+            opacity: 0.1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(145deg, #ffffff, #f0f9ff);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--success);
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--success);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #64748b;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--dark);
+            color: white;
+            margin-top: 40px;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .doodle {
+            position: absolute;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .doodle-1 {
+            top: 50px;
+            right: 50px;
+            width: 150px;
+            height: 150px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%232563eb"><path d="M20,50 Q35,20 50,50 T80,50 Q95,80 50,80 T20,50"/></svg>');
+            background-size: contain;
+        }
+        
+        .doodle-2 {
+            bottom: 100px;
+            left: 30px;
+            width: 100px;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%238b5cf6"><circle cx="50" cy="50" r="40" stroke="%238b5cf6" stroke-width="2" fill="none" stroke-dasharray="5,5"/></svg>');
+            background-size: contain;
+        }
+        
+        .doodle-3 {
+            top: 200px;
+            left: 40px;
+            width: 80px;
+            height: 80px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23f59e0b"><polygon points="50,10 80,90 20,90"/></svg>');
+            background-size: contain;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 4px solid white;
+        }
+        
+        .course-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, #e0f2fe, #dbeafe);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Brochure Page 1: Cover -->
+    <div class="brochure">
+        <div class="page">
+            <div class="doodle doodle-1"></div>
+            <div class="doodle doodle-2"></div>
+            
+            <div class="header">
+                <div class="logo">
+                    <!-- Replace with your logo file name -->
+                    <img src="1.png" alt="CurioLearn Logo">
+                </div>
+                <div class="contact">
+                    <strong>Talk to Our Experts</strong>
+                    +91 9596 164 599<br>
+                    +91 7398 123 426<br>
+                    <a href="mailto:teamcuriolearn@gmail.com">teamcuriolearn@gmail.com</a>
+                </div>
+            </div>
+            
+            <div class="tagline">Igniting Curiosity, Empowering Learning</div>
+            
+            <h1>Highest Personal Attention.<br>Guaranteed Improvement.</h1>
+            
+            <div class="highlight">Unlock Your Child's Superpowers!</div>
+            
+            <p>Engaging online learning that makes education fun and interactive. At CurioLearn, we believe every learner is unique and deserves personalized attention to unlock their full potential.</p>
+            
+            <a href="#contact" class="cta-button">Book Free Demo</a>
+            
+            <!-- Indian stock image -->
+            <img src="2.jpg" 
+                 alt="Indian children learning online" class="hero-image">
+            
+            <div class="page-number">Page 1</div>
+        </div>
+    </div>
+    
+    <!-- Brochure Page 2: Introduction -->
+    <div class="brochure">
+        <div class="page">
+            <div class="doodle doodle-3"></div>
+            
+            <div class="header">
+                <div class="logo">
+                    <img src="1.png" alt="CurioLearn Logo">
+                </div>
+                <div class="page-number">Page 2</div>
+            </div>
+            
+            <h2>Your Journey to Success</h2>
+            <div class="subheading">A Promise from CurioLearn</div>
+            
+            <div class="section">
+                <p>Dear Parents and Students,</p>
+                
+                <p>As we navigate the ever-changing landscape of education, we understand the unique challenges that students face today. At CurioLearn, we're not just teaching subjects - we're nurturing young minds to become confident, curious learners.</p>
+                
+                <p>Our mission is to provide the highest level of personal attention to each student, ensuring they don't just learn, but thrive. We believe that every child possesses unique strengths and abilities, and it is our privilege to help them discover and unleash their true potential.</p>
+                
+                <p>CurioLearn is more than an educational platform; it's a community where students receive individualized support, ensuring their success is not just a possibility but a certainty. Together, let's embark on a journey of discovery and growth.</p>
+                
+                <p>We are your partners in this educational adventure.</p>
+                
+                <p style="margin-top: 30px;"><strong>The CurioLearn Team</strong></p>
+            </div>
+            
+            <div class="highlight">"Education is not the filling of a pail, but the lighting of a fire." - William Butler Yeats</div>
+        </div>
+    </div>
+    
+    <!-- Brochure Page 3: Courses Offered -->
+    <div class="brochure">
+        <div class="page">
+            <div class="doodle doodle-1"></div>
+            <div class="doodle doodle-3"></div>
+            
+            <div class="header">
+                <div class="logo">
+                    <img src="1.png" alt="CurioLearn Logo">
+                </div>
+                <div class="page-number">Page 3</div>
+            </div>
+            
+            <h2>Our Comprehensive Courses</h2>
+            <div class="subheading">Tailored Learning for Every Child</div>
+            
+            <div class="courses-grid">
+                <!-- Abacus -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-calculator"></i></div>
+                    <h3>Abacus Master</h3>
+                    <p>Develop lightning-fast math skills with our proven abacus techniques. Perfect for enhancing mental calculation and concentration.</p>
+                    <p><strong>Ages:</strong> 6-14 years</p>
+                </div>
+                
+                <!-- Vedic Maths -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-square-root-alt"></i></div>
+                    <h3>Vedic Maths</h3>
+                    <p>Discover ancient Indian math secrets that make calculations 10x faster! Improves logical thinking and accuracy.</p>
+                    <p><strong>Ages:</strong> 8-14 years</p>
+                </div>
+                
+                <!-- Phonics -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-book-reader"></i></div>
+                    <h3>Phonics Wizard</h3>
+                    <p>Unlock the magic of reading with our phonics program. Watch your child read their first book independently!</p>
+                    <p><strong>Ages:</strong> 4-10 years</p>
+                </div>
+                
+                <!-- English Grammar -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-language"></i></div>
+                    <h3>English Grammar</h3>
+                    <p>Grammar made fun with games and interactive activities. Master sentence structure and writing skills.</p>
+                    <p><strong>Ages:</strong> 7-14 years</p>
+                </div>
+                
+                <!-- Spoken English -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-microphone-alt"></i></div>
+                    <h3>Spoken English</h3>
+                    <p>From shy to confident speaker in just 12 weeks! Develops confidence in communication with focus on pronunciation.</p>
+                    <p><strong>Ages:</strong> 6-14 years</p>
+                </div>
+                
+                <!-- English Reading -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-glasses"></i></div>
+                    <h3>English Reading</h3>
+                    <p>Turn your child into a bookworm with our reading strategies. Improve reading speed and comprehension.</p>
+                    <p><strong>Ages:</strong> 6-14 years</p>
+                </div>
+            </div>
+            
+            <div class="page-number">Page 3</div>
+        </div>
+    </div>
+    
+    <!-- Brochure Page 4: More Courses -->
+    <div class="brochure">
+        <div class="page">
+            <div class="doodle doodle-2"></div>
+            
+            <div class="header">
+                <div class="logo">
+                    <img src="1.png" alt="CurioLearn Logo">
+                </div>
+                <div class="page-number">Page 4</div>
+            </div>
+            
+            <h2>More Learning Opportunities</h2>
+            <div class="subheading">Developing Well-Rounded Individuals</div>
+            
+            <div class="courses-grid">
+                <!-- Creative Writing -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-pen-fancy"></i></div>
+                    <h3>Creative Writing</h3>
+                    <p>Unlock your child's inner storyteller with our creative techniques. Develop storytelling skills and expression.</p>
+                    <p><strong>Ages:</strong> 8-14 years</p>
+                </div>
+                
+                <!-- Public Speaking -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-bullhorn"></i></div>
+                    <h3>Public Speaking</h3>
+                    <p>From stage fright to spotlight in our confidence-building program. Overcome stage fear and develop presentation skills.</p>
+                    <p><strong>Ages:</strong> 8-14 years</p>
+                </div>
+                
+                <!-- Art & Craft -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Art & Craft</h3>
+                    <p>Where messy fingers create masterpieces and build confidence! Encourages creativity and boosts motor skills.</p>
+                    <p><strong>Ages:</strong> 5-12 years</p>
+                </div>
+                
+                <!-- Coding -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Coding</h3>
+                    <p>Start young - build games before they can drive! Learn computational thinking and create games and apps.</p>
+                    <p><strong>Ages:</strong> 8-14 years</p>
+                </div>
+                
+                <!-- French Language -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-flag"></i></div>
+                    <h3>French Language</h3>
+                    <p>Bonjour! Give your child the gift of French language and culture. Basic conversational skills and cultural understanding.</p>
+                    <p><strong>Ages:</strong> 8-14 years</p>
+                </div>
+                
+                <!-- German Language -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-flag"></i></div>
+                    <h3>German Language</h3>
+                    <p>Guten Tag! Explore German language and culture. Learn Europe's most widely spoken native language.</p>
+                    <p><strong>Ages:</strong> 8-14 years</p>
+                </div>
+            </div>
+            
+            <div class="highlight">Customized Learning: Don't see what you're looking for? We can create a personalized program just for you!</div>
+        </div>
+    </div>
+    
+    <!-- Brochure Page 5: Benefits and Features -->
+    <div class="brochure">
+        <div class="page">
+            <div class="doodle doodle-1"></div>
+            <div class="doodle doodle-3"></div>
+            
+            <div class="header">
+                <div class="logo">
+                    <img src="1.png" alt="CurioLearn Logo">
+                </div>
+                <div class="page-number">Page 5</div>
+            </div>
+            
+            <h2>The CurioLearn Advantage</h2>
+            <div class="subheading">Why Parents Choose Us</div>
+            
+            <div class="benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-user-friends"></i></div>
+                    <h3>One-on-One Attention</h3>
+                    <p>No crowded classrooms. Get undivided attention with sessions tailored to your child's learning style.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-gamepad"></i></div>
+                    <h3>Interactive Learning</h3>
+                    <p>Engaging sessions with multimedia tools, real-world examples, and hands-on activities.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Progress Tracking</h3>
+                    <p>Regular assessments and progress reports to ensure your child is on the right track.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-certificate"></i></div>
+                    <h3>Progress Certification</h3>
+                    <p>Receive certificates upon course completion to celebrate achievements.</p>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Happy Students</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Expert Tutors</div>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <p>"CurioLearn transformed my daughter's approach to mathematics. The personalized attention helped her overcome her fear of the subject, and she improved from a C to an A grade in just three months!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">PS</div>
+                    <div>
+                        <strong>Priya Sharma</strong>
+                        <div>Parent of 8-year-old</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Brochure Page 6: Call to Action -->
+    <div class="brochure">
+        <div class="page">
+            <div class="doodle doodle-2"></div>
+            
+            <div class="header">
+                <div class="logo">
+                    <img src="1.png" alt="CurioLearn Logo">
+                </div>
+                <div class="page-number">Page 6</div>
+            </div>
+            
+            <h2>Ready to Begin Your Learning Journey?</h2>
+            <div class="subheading">Join Our Community of Successful Learners</div>
+            
+            <div class="section">
+                <div class="highlight">Limited Time Offer: Get 5% Off Your First Course!</div>
+                
+                <p>Give your child the advantage of future-ready skills in a fun and engaging way! Explore our courses and enroll today.</p>
+                
+                <a href="#contact" class="cta-button">Book Free Demo</a>
+            </div>
+            
+            <!-- Indian stock image -->
+            <img src="4.jpg" 
+                 alt="Indian children learning together online" class="hero-image">
+            
+            <div class="contact-info">
+                <h3>Contact Us</h3>
+                <p><strong>Email:</strong> teamcuriolearn@gmail.com</p>
+                <p><strong>Phone:</strong> +91 9596 164 599 | +91 7398 123 426</p>
+            </div>
+            
+            <div class="footer">
+                <p>&copy; 2025 CurioLearn. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
